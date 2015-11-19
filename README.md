@@ -5,9 +5,9 @@ Programming language design(2015-2) team project
 
 Requirements
 ------------
-python 2.x(recommend >= 2.7)
-virtualenv
-Visual studio C++(for windows, scipy)
+- [python 2.x](https://www.python.org/downloads/release/python-2710/)(recommend >= 2.7)
+- [virtualenv](https://virtualenv.readthedocs.org/en/latest/)
+- [Visual studio C++](http://aka.ms/vcpython27)(for windows, scipy)
 
 Development environment Setup(Recommended)
 -----------------------------------------
@@ -17,6 +17,6 @@ Development environment Setup(Recommended)
 
 Dependency
 ----------
-numpy
-scipy
-pandas
+- numpy
+- scipy
+- pandas
