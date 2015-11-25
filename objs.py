@@ -4,14 +4,22 @@ class User:
     def __init__(self, age, exp, sex):
         self.age = int(age)
         self.exp = int(exp)
-        self.sex = Sex(sex)
+        self.sex = Sex[sex]
 
 class Point:
-    def __init__(self, x, y):
-        self.x = int(x)
-        self.y = int(y)
+    def __init__(self, x, y, z = None):
+        self.x = float(x)
+        self.y = float(y)
+        if z is not None:
+            self.z = float(z)
 
-def CodePoint:
+    def __repr__(self):
+        if self.z is not None:
+            return "<Point: %f, %f, %f>" % (self.x, self.y, self.z)
+        else:
+            return "<Point: %f, %f>" % (self.x, self.y)
+
+class CodePoint:
     def __init__(self, code):
         self.code = int(code)
 
@@ -36,3 +44,7 @@ class Model:
 
     def __repr__(self):
         return "<Model: %s>" % model_name
+
+    def screen_size(self):
+        # TODO: get screen size from model name
+        pass
