@@ -22,3 +22,5 @@ def load_save_data(filename):
 key_data = load_key_data('data/v2_corporate/key.csv')
 sensor_data = load_sensor_data('data/v2_corporate/sensor.csv')
 save_data = load_save_data('data/v2_corporate/save.csv')
+
+screen_error_rate_by_size = save_data.groupby('diag').mean()
