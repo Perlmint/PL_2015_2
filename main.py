@@ -15,7 +15,7 @@ def load_sensor_data(filename):
     return data
 
 def load_save_data(filename):
-    data = pd.read_csv(filename)
+    data = pd.read_csv(filename, names=['time', 'file_name', 'battery', 'model', 'age', 'years_of_use', 'sex', 'input_posture', 'input_situation', 'keyboard_condition', 'test_time', 'word_count', 'WPM', 'error_count', 'error_rate', 'letter_count'], skiprows=[0])
     data = pd.merge(data, model_infos, how='left', on=['model'])
     return data
 
