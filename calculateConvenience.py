@@ -10,10 +10,8 @@ def calculateConvenience(data):
     pca = PCA(1)
     x_pca = pca.fit_transform(pca_data)
 
-    s = pd.DataFrame(x_pca,columns=['Convenience'])
+    data['Convenience'] = x_pca
 
     
-    result = pd.concat([data,s],axis=1)
-
-    return result
+    return data
 
