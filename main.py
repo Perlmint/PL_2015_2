@@ -1,20 +1,24 @@
-import csv
+import pandas as pd
 
-def read_csv(filename, data_type):
-    with open(filename, 'r') as f:
-        reader = csv.reader(f)
-        ret = []
-        # skip header
-        reader.next()
-        for row in reader:
-            ret.append(data_type(row))
+key_distances = pd.read_csv('data/key_distances.csv')
+model_infos = pd.read_csv('data/model.csv')
 
-        return ret
+def load_key_data(filename):
+    key_data = pd.read_csv(filename)
+    key_data = pd.merge(key_data, key_distances, how='left', on=['code_point', 'intent_code_point'])
+    key_data = pd.merge(key_data, model_infos, how='left', on=['model'])
+    return key_data
 
-def main():
-    import raw_data
-    a = read_csv('data/v1_original/key/Key_1.csv', raw_data.KeyData)
-    print a
+def load_sensor_data(filename):
+    data = pd.read_csv(filename)
+    data = pd.merge(data, model_infos, how='left', on=['model'])
+    return data
 
-if __name__ == "__main__":
-    main()
+def load_save_data(filename):
+    data = pd.read_csv(filename)
+    data = pd.merge(data, model_infos, how='left', on=['model'])
+    return data
+
+key_data = load_key_data('data/v2_corporate/key.csv')
+sensor_data = load_sensor_data('data/v2_corporate/sensor.csv')
+save_data = load_save_data('data/v2_corporate/save.csv')
