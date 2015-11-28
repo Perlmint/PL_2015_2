@@ -20,3 +20,4 @@ Dependency
 - numpy
 - scipy
 - pandas
+- scikit-learn
