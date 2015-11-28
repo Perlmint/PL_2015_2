@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
 key_distances = pd.read_csv('data/key_distances.csv')
@@ -42,7 +43,7 @@ class mean_sensor:
         if time < cur_val['time']:
             return False
         for k in sensor_columns:
-            data[k] += cur_val[k]
+            data[k] += np.abs(cur_val[k])
             self.count += 1
         return True
 
@@ -59,6 +60,12 @@ class mean_sensor:
                 if not self.calc(time, data, val[1]):
                     self.prev_val = val[1]
                     break
+
+        if 'acc' not in data:
+            def sq_sqrt(key):
+                data[key] = np.sqrt(np.sum(np.power([data[key + '_x'], data[key + '_y'], data[key + '_y']], 2)))
+            sq_sqrt('acc')
+            sq_sqrt('gyro')
 
         if self.count == 0 and self.prev_data:
             data = self.prev_data
