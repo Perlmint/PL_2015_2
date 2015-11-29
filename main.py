@@ -87,13 +87,10 @@ def key_sensor_merged_data(index):
     itr = sensor.iterrows()
     key = key.merge(key.apply(mean_sensor(itr), axis=1))
 
-    return key, sensor
+    return key
 
 # sample
-key_sensors = [key_sensor_merged_data(i) for i in range(1,20)]
-
-key_data = pd.concat([k[0] for k in key_sensors])
-sensor_data = pd.concat([v[1] for v in key_sensors])
+key_data = pd.concat([key_sensor_merged_data(i) for i in range(1,28655)])
 
 plt.figure(1)
 real_error = calculateRealErrorRate.calculateRealErrorRate(save_data,key_data,plt)
