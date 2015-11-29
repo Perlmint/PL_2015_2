@@ -90,7 +90,7 @@ def key_sensor_merged_data(index):
     return key
 
 # sample
-key_data = pd.concat([key_sensor_merged_data(i) for i in range(1,28655)])
+key_data = pd.read_csv('data/key_data_calced.csv') #pd.concat([key_sensor_merged_data(i) for i in range(1,28655)])
 
 plt.figure(1)
 real_error = calculateRealErrorRate.calculateRealErrorRate(save_data,key_data,plt)
