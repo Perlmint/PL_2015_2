@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import calculateConvenience
+import calculateRealErrorRate
+import calculateCorrelation
 
 key_distances = pd.read_csv('data/key_distances.csv')
 model_infos = pd.read_csv('data/model.csv')
@@ -91,3 +94,9 @@ key_sensors = [key_sensor_merged_data(i) for i in range(1,20)]
 
 key_data = pd.concat([k[0] for k in key_sensors])
 sensor_data = pd.concat([v[1] for v in key_sensors])
+
+plt.figure(1)
+real_error = calculateRealErrorRate.calculateRealErrorRate(save_data,key_data,plt)
+save_data = calculateConvenience.calculateConvenience(save_data,real_error,plt)
+calculateCorrelation.calculateCorrelation(save_data,plt)
+plt.show()

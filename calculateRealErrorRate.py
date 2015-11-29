@@ -6,7 +6,6 @@ import sklearn.cluster
 import matplotlib.pyplot as plt
 from itertools import cycle
 
-
 def calculateRealErrorRate(save,data,plt):
 
     data2 = data[(data.code_point != -1) & ((data.intent_code_point == 32) | ((data.intent_code_point >= 97) & (data.intent_code_point <= 122)))]
@@ -63,7 +62,7 @@ def calculateRealErrorRate(save,data,plt):
         if valid_key_count == 0:
             valid_key_count = 1;
 
-        real_error.append([valid_error_count,valid_key_count,valid_error_count/valid_key_count])
+        real_error.append(valid_error_count/valid_key_count)
         
     return real_error
 
