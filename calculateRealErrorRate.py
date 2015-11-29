@@ -12,7 +12,7 @@ def calculateRealErrorRate(save,data,plt):
     data2['removal'] = False    
     key = pd.DataFrame(data2,columns=['distance','acc'])
 
-    key['acc'] = key['acc'] / 5
+    key['acc'] = key['acc'] / 50
 
     kmeans = sklearn.cluster.KMeans(5,n_init=1)
     kmeans.fit(key)
