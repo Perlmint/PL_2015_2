@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.decomposition import PCA
 
 def calculateConvenience(data,error_rate,plt):
-    pca_data = pd.DataFrame(data,columns=['WPM','years_of_use'])
+    pca_data = pd.DataFrame(data,columns=['WPM'])
     pca_data['error_rate'] = pd.Series(error_rate)
     
     pca_data['error_rate'] = 1 - pca_data['error_rate']
@@ -19,6 +19,10 @@ def calculateConvenience(data,error_rate,plt):
 
     plt.title("PCA")
     plt.grid(True)
+
+
+    plt.subplot(223)
+    plt.plot(pca.explained_variance_ratio_)
     
     return data
 
